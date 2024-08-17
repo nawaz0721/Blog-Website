@@ -1,0 +1,186 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  transition: background-color 0.5s ease;
+}
+
+.blog-editor,
+.published-blog {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 800px;
+  margin-bottom: 40px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-editor:hover,
+.published-blog:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.banner-container {
+  width: 100%;
+  height: 300px;
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: background-color 0.5s ease;
+}
+
+.banner-container:hover {
+  background-color: #d1d1d1;
+}
+
+.upload-button {
+  background-color: #8a6d3bbe;
+  border: none;
+  padding: 12px 25px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: #8a6d3b;
+  transform: scale(1.05);
+}
+
+.hidden {
+  display: none;
+}
+
+#bannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+#bannerImage.hidden {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+#bannerImage:not(.hidden) {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.blog-title {
+  width: 95%;
+  font-size: 28px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  padding: 15px;
+  margin-bottom: 25px;
+  transition: border-bottom-color 0.3s ease;
+}
+
+.blog-title:focus {
+  border-bottom-color: #8a6d3b;
+  outline: none;
+}
+
+.blog-content {
+  width: 95%;
+  height: 250px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  font-size: 18px;
+  margin-bottom: 25px;
+  transition: border-color 0.3s ease;
+}
+
+.blog-content:focus {
+  border-color: #8a6d3b;
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.publish-button {
+  background-color: #8a6d3bbe;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.read-btn {
+  padding: 8px 16px;
+  background-color: #8a6d3bbe;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.read-btn:hover {
+  background-color: #8a6d3b;
+  transform: scale(1.05);
+}
+
+.publish-button:hover {
+  background-color: #8a6d3b;
+  transform: scale(1.05);
+}
+
+.published-blog img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.published-blog img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.published-blog h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.published-blog h1:hover {
+  color: #007bff;
+}
+
+.published-blog p {
+  font-size: 20px;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+.published-blog p:hover {
+  color: #666;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h2>Contact Me</h2>
+      </div>
+      <form
+        action="https://api.web3forms.com/submit"
+        id="contactForm"
+        method="POST"
+      >
+        <input
+          type="hidden"
+          name="access_key"
+          value="03e83bf5-699f-4cec-a20d-53ab5ce7591e"
+        />
+
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          placeholder="Full Name"
+          required
+        />
+        <input
+          type="email"
+          id="emailAddress"
+          name="emailAddress"
+          placeholder="Email Address"
+          required
+        />
+        <input
+          type="text"
+          id="phoneNumber"
+          name="phoneNumber"
+          placeholder="Phone Number"
+          required
+        />
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          placeholder="Subject"
+          required
+        />
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Your Message"
+          required
+        ></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+    <button class="read-btn" id="backToHome">Back</button>
+
+    <script src="app.js"></script>
+  </body>
+</html>

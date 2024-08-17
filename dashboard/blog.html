@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Details</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="blogStyle.css" />
+  </head>
+  <body>
+    <div class="blog-details-container">
+      <header>
+        <h1 id="blogTitle">Blog Title</h1>
+      </header>
+      <img id="blogBanner" alt="Blog Banner" class="fade-in" />
+      <p id="blogContent" class="fade-in"></p>
+      <button class="read-btn" id="backToHome">Back</button>
+    </div>
+
+    <script type="module">
+      import { db, doc, getDoc } from "../utils/utils.js";
+
+      // Get the blog ID from the URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const blogId = urlParams.get("blogId");
+      const backToHome = document.getElementById("backToHome");
+      backToHome.addEventListener("click", () => {
+        window.location.href = "../index.html";
+      });
+
+      // Fetch blog details
+      async function getBlogDetails(blogId) {
+        const docRef = doc(db, "blogs", blogId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const blogData = docSnap.data();
+          document.getElementById("blogTitle").textContent = blogData.title;
+          document.getElementById("blogBanner").src = blogData.banner;
+          document.getElementById("blogContent").textContent = blogData.content;
+
+          // Add fade-in animation after fetching content
+          document.getElementById("blogBanner").classList.add("fade-in");
+          document.getElementById("blogContent").classList.add("fade-in");
+        } else {
+          alert("No such blog found!");
+        }
+      }
+
+      getBlogDetails(blogId);
+    </script>
+  </body>
+</html>

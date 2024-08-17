@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blogging Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <span class="logo_name_top">Blogger</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#" id="home">Home</a></li>
+          <li><a href="contact me/index.html" id="contactMe">Contact me</a></li>
+          <li><a href="#" id="aboutUs">About us</a></li>
+          <li><a href="blog/index.html" id="editor">Write A Blog</a></li>
+          <li><a href="#" id="login">Login</a></li>
+          <!-- <li><a href="#" id="logout">Logout</a></li> -->
+          <div id="avatar">
+            <img
+              id="avatarButton"
+              type="button"
+              data-dropdown-toggle="userDropdown"
+              data-dropdown-placement="bottom-start"
+              class="w-10 h-10 rounded-full cursor-pointer"
+              src="images/firework.avif"
+              alt="User dropdown"
+            />
+
+            <!-- Dropdown menu -->
+            <div
+              id="userDropdown"
+              class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+            >
+              <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                <div id="userName">Bonnie Green</div>
+                <div class="font-medium truncate" id="userEmail">
+                  name@flowbite.com
+                </div>
+              </div>
+              <ul
+                class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                aria-labelledby="avatarButton"
+              >
+                <li>
+                  <a href="dashboard/index.html" class="block px-4 py-2"
+                    >Dashboard</a
+                  >
+                </li>
+              </ul>
+              <div class="py-2">
+                <li>
+                  <a id="logout" href="#" class="block px-4 py-2 text-sm"
+                    >Sign out</a
+                  >
+                </li>
+              </div>
+            </div>
+          </div>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="welcome-section">
+      <div class="welcome-content">
+        <h2>Welcome In The World Of <span>Blog Writing</span></h2>
+        <a href="blog/index.html" id="editor">
+          <button class="write-btn">Write A Blog</button>
+        </a>
+      </div>
+    </section>
+
+    <section class="blog-list">
+      <div class="published-blog" id="publishedBlog"></div>
+    </section>
+
+    <footer>
+      <div class="content">
+        <div class="top">
+          <div class="logo-details">
+            <i class="fab fa-slack"></i>
+            <span class="logo_name">Blogger</span>
+          </div>
+          <div class="media-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <hr />
+        <div class="link-boxes">
+          <ul class="box">
+            <li class="link_name">Company</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact me/index.html">Contact us</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="blog/index.html">Write A Blog</a></li>
+          </ul>
+          <ul class="box">
+            <li class="link_name">Services</li>
+            <li><a href="#">Personals Blog</a></li>
+            <li><a href="#">Educations Blog</a></li>
+            <li><a href="#">Foods Blog</a></li>
+            <li><a href="#">Travels Blog</a></li>
+          </ul>
+          <ul class="box">
+            <li class="link_name">Account</li>
+            <li><a href="dashboard/index.html">Profile</a></li>
+            <li><a href="#">My account</a></li>
+          </ul>
+
+          <ul class="box input-box">
+            <li class="link_name">Subscribe</li>
+            <li><input type="text" placeholder="Enter your email" /></li>
+            <li><input type="button" value="Subscribe" /></li>
+          </ul>
+        </div>
+      </div>
+      <div class="bottom-details">
+        <div class="bottom_text">
+          <span class="copyright_text"
+            >Copyright © 2024 <a href="index.html">Blogger</a>All rights
+            reserved</span
+          >
+          <span class="policy_terms">
+            <a href="#">Privacy policy</a>
+            <a href="#">Terms & condition</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+  </body>
+</html>
