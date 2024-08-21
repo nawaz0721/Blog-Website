@@ -26,65 +26,47 @@ signUpButton.addEventListener("click", () => {
   container.classList.add("right-panel-active");
 });
 
-signUpbtn.addEventListener("click", () => {
+signUpbtn.addEventListener("click", async () => {
   signUpbtn.innerText = "loading";
+
   const email = createEmail.value;
   const password = createPassword.value;
   const name = createName.value;
-  const profile = userProfile.value;
+  const profileFile = userProfile.files[0];
 
-  console.log(profile);
+  if (!email || !password || !name || !profileFile) {
+    alert("Please fill all fields and upload a profile image.");
+    signUpbtn.innerText = "sign up";
+    return;
+  }
 
-  const userInfo = {
-    name,
-    email,
-    password,
-    profile,
-  };
+  const userInfo = { name, email, password, profile: "" };
 
-  console.log(userInfo);
-  console.log("Ahmed");
+  try {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredential.user;
 
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(async (userCredential) => {
-      const user = userCredential.user;
-      console.log(user.uid);
-      const userRef = ref(
-        storage,
-        `userProfile/${user.uid}/${userProfile.files[0].name}`
-      );
-      console.log("Ahmed");
-      uploadBytes(userRef, userProfile.files[0])
-        .then(() => {
-          // user image uploaded
-          console.log("user image uploaded");
-          getDownloadURL(userRef)
-            .then((url) => {
-              // url agya bhai
-              console.log(url);
-              userInfo.profile = url;
-              const userDbRef = doc(db, "users", user.uid);
-              setDoc(userDbRef, userInfo).then(() => {
-                container.classList.add("right-panel-active");
-                container.classList.remove("right-panel-active");
-                signUpbtn.innerText = "sign up";
-              });
-            })
-            .catch((error) => {
-              alert("url firbase nhi de raha");
-              signUpbtn.innerText = "sign up";
-            });
-        })
-        .catch(() => {
-          alert("image upload failed");
-          signUpbtn.innerText = "sign up";
-        });
-    })
-    .catch((error) => {
-      alert("sign up failed");
-      console.log(error);
-      signUpbtn.innerText = "sign up";
-    });
+    const userRef = ref(storage, `userProfile/${user.uid}/${profileFile.name}`);
+    await uploadBytes(userRef, profileFile);
+
+    const url = await getDownloadURL(userRef);
+    userInfo.profile = url;
+
+    const userDbRef = doc(db, "users", user.uid);
+    await setDoc(userDbRef, userInfo);
+
+    container.classList.remove("right-panel-active");
+    signUpbtn.innerText = "sign up";
+  } catch (error) {
+    console.log("Error Code:", error.code);
+    console.log("Error Message:", error.message);
+    alert(`Sign up failed: ${error.message}`);
+    signUpbtn.innerText = "sign up";
+  }
 });
 
 signInButton.addEventListener("click", () => {
