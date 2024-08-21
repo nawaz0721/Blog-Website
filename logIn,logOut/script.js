@@ -43,23 +43,25 @@ signUpbtn.addEventListener("click", () => {
   };
 
   console.log(userInfo);
+  console.log("Ahmed");
 
   createUserWithEmailAndPassword(auth, email, password)
     .then(async (userCredential) => {
       const user = userCredential.user;
       console.log(user.uid);
-      //   upload image
-      // const blogRef = ref(storage, blogData.banner.name);
       const userRef = ref(
         storage,
         `userProfile/${user.uid}/${userProfile.files[0].name}`
       );
+      console.log("Ahmed");
       uploadBytes(userRef, userProfile.files[0])
         .then(() => {
           // user image uploaded
+          console.log("user image uploaded");
           getDownloadURL(userRef)
             .then((url) => {
               // url agya bhai
+              console.log(url);
               userInfo.profile = url;
               const userDbRef = doc(db, "users", user.uid);
               setDoc(userDbRef, userInfo).then(() => {
@@ -80,6 +82,7 @@ signUpbtn.addEventListener("click", () => {
     })
     .catch((error) => {
       alert("sign up failed");
+      console.log(error);
       signUpbtn.innerText = "sign up";
     });
 });
